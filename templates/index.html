@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intent Classification</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head>
+<body>
+    <div class="container">
+        <h1>Intent Classifier</h1>
+        <p>Select an intent to view (this list is for reference only):</p>
+        <select id="intent-list">
+            <option value="">-- Select an Intent --</option>
+        </select>
+        <h3> This website may give sometime wrong important regarding intent , because it is under maintenance </h3>
+        <h2>Test Your Sentence</h2>
+        <form action="/classify" method="post">
+            <textarea name="sentence" placeholder="Enter your sentence here..." required></textarea>
+            <button type="submit">Classify Intent</button>
+        </form>
+        <p id="predicted-intent"></p>
+    </div>
+
+    <script>
+        // Array of intents
+        const intents = ["accept reservations", "account blocked", "alarm", "application status",
+            "apr", "are you a bot", "balance", "bill balance", "bill due", "book flight",
+            "book hotel", "calculator", "calendar", "calendar update", "calories", "cancel",
+            "cancel reservation", "car rental", "card declined", "carry on", "change accent",
+            "change ai name", "change language", "change speed", "change user name", 
+            "change volume", "confirm reservation", "cook time", "credit limit", 
+            "credit limit change", "credit score", "current location", "damaged card", "date",
+            "definition", "direct deposit", "directions", "distance", "do you have pets", 
+            "exchange rate", "expiration date", "find phone", "flight status", "flip coin", 
+            "food last", "freeze account", "fun fact", "gas", "gas type", "goodbye", "greeting",
+            "how busy", "how old are you", "improve credit score", "income", "ingredient substitution",
+            "ingredients list", "insurance", "insurance change", "interest rate", "international fees",
+            "international visa", "jump start", "last maintenance", "lost luggage", "make call", "maybe",
+            "meal suggestion", "meaning of life", "measurement conversion", "meeting schedule", "min payment",
+            "mpg", "new card", "next holiday", "next song", "no", "nutrition info", "oil change how", 
+            "oil change when", "order", "order checks", "order status", "pay bill", "payday", "pin change",
+            "play music", "plug type", "pto balance", "pto request", "pto request status", "pto used", "recipe",
+            "redeem rewards", "reminder", "reminder update", "repeat", "replacement card duration", "report fraud",
+            "report lost card", "reset settings", "restaurant reservation", "restaurant reviews", "restaurant suggestion",
+            "rewards balance", "roll dice", "rollover 401k", "routing", "schedule maintenance", "schedule meeting",
+            "share location", "shopping list", "shopping list update", "smart home", "spelling", "spending history",
+            "sync device", "taxes", "tell joke", "text", "thank you", "time", "timer", "timezone", "tire change", 
+            "tire pressure", "todo list", "todo list update", "traffic", "transactions", "transfer", "translate",
+            "travel alert", "travel notification", "travel suggestion", "uber", "update playlist", "user name", 
+            "vaccines", "w2", "weather", "what are your hobbies", "what can i ask you", "what is your name", 
+            "what song", "where are you from", "whisper mode", "who do you work for", "who made you"];
+
+        // Populating the dropdown
+        const selectElement = document.getElementById('intent-list');
+        intents.forEach(intent => {
+            const option = document.createElement('option');
+            option.value = intent;
+            option.textContent = intent;
+            selectElement.appendChild(option);
+        });
+    </script>
+</body>
+</html>

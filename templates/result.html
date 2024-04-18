@@ -1,0 +1,17 @@
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Classification Result</title>
+</head>
+<body>
+    <h1>Classification Result</h1>
+    {% if error %}
+        <p>Error: {{ error }}</p>
+    {% else %}
+        <p>Sentence: "{{ sentence }}"</p>
+        <p>Intent: {{ intent }}</p>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Try another sentence</a>
+</body>
+</html>
